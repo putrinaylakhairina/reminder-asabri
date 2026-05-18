@@ -17,12 +17,14 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: '#fb923c', // orange-400
-                'primary-dark': '#f97316', // orange-500
-                secondary: '#fef3c7',
-                'background-alt': '#fffbeb',
-                danger: '#dc2626', // red-600
-                'danger-dark': '#b91c1c', // red-700
+                primary: '#00A39D', // BSI Teal
+                'primary-dark': '#00827D', // Darker Teal
+                secondary: '#ffffff', // White for sidebar
+                'background-alt': '#F1F5F9', // Slate-100 for hover
+                accent: '#F37021', // BSI Orange
+                'accent-dark': '#D96016',
+                danger: '#dc2626',
+                'danger-dark': '#b91c1c',
             }
         },
     },

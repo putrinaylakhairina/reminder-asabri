@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'instansi' => 'TNI AD',
             'gaji_pensiun' => 4500000,
             'tanggal_jatuh_tempo' => Carbon::today()->addDays(2),
-            'no_hp' => '089876543210',
+            'no_hp' => '082164812508',
             'email' => 'siti@example.com',
         ]);
 

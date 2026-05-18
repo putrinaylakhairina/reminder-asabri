@@ -1,4 +1,4 @@
-<header class="fixed top-0 z-50 w-full bg-secondary">
+<header class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
@@ -9,9 +9,9 @@
                         <path :class="{'hidden': !isSidebarOpen, 'inline-flex': isSidebarOpen }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <a href="{{ route('dashboard') }}" class="flex ms-2 md:me-24">
-                    <img src="{{ asset('daipolres.webp') }}" class="h-8 me-3 rounded-full" alt="Logo" />
-                    <span class="self-center text-xs font-semibold sm:text-lg whitespace-nowrap">REMINDER ASABRI</span>
+                <a href="{{ route('dashboard') }}" class="flex ms-2 md:me-24 items-center space-x-3">
+                    <img src="{{ asset('logo-bsi.png') }}" class="h-10" alt="Logo BSI" />
+                    <span class="self-center text-xs font-semibold sm:text-lg whitespace-nowrap text-primary">REMINDER ASABRI</span>
                 </a>
             </div>
             <div class="flex items-center">

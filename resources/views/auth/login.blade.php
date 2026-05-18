@@ -13,7 +13,7 @@
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <div class="flex min-h-screen">
         <!-- Left Panel (Branding) - Enhanced -->
-        <div class="hidden lg:flex lg:w-1/2 xl:w-2/5 items-center justify-center bg-gradient-to-br from-primary via-orange-400 to-yellow-300 p-8 xl:p-12 relative overflow-hidden">
+        <div class="hidden lg:flex lg:w-1/2 xl:w-2/5 items-center justify-center bg-gradient-to-br from-primary to-primary-dark p-8 xl:p-12 relative overflow-hidden">
             <!-- Decorative Background Elements -->
             <div class="absolute top-0 left-0 w-full h-full opacity-10">
                 <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
@@ -22,14 +22,14 @@
             
             <div class="text-center relative z-10 max-w-lg">
                 <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
-                    <div class="w-24 h-24 mx-auto mb-6 bg-white/30 rounded-full flex items-center justify-center">
-                        <i data-lucide="bell-ring" class="w-12 h-12 text-gray-800"></i>
+                    <div class="w-28 h-28 mx-auto mb-6 bg-white rounded-full flex items-center justify-center p-4 shadow-xl border-4 border-white/20">
+                        <img src="{{ asset('logo-bsi.png') }}" alt="Logo BSI" class="w-full h-full object-contain">
                     </div>
-                    <h1 class="text-2xl xl:text-3xl font-extrabold mb-4 leading-tight text-gray-800 drop-shadow-lg">
+                    <h1 class="text-2xl xl:text-3xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg">
                         SISTEM PENGINGAT <br> ASABRI
                     </h1>
-                    <div class="w-20 h-1 bg-gray-800 mx-auto mb-4 rounded-full"></div>
-                    <p class="text-sm xl:text-base font-semibold text-gray-700 drop-shadow-md leading-relaxed">
+                    <div class="w-20 h-1 bg-accent mx-auto mb-4 rounded-full"></div>
+                    <p class="text-sm xl:text-base font-semibold text-gray-100 drop-shadow-md leading-relaxed">
                         Sistem Informasi Notifikasi dan Pengingat <br>
                         Pensiunan ASABRI
                     </p>
@@ -42,14 +42,14 @@
             <div class="w-full max-w-md lg:max-w-lg">
 
                 <!-- Mobile Branding - Enhanced -->
-                <div class="lg:hidden text-center mb-8 p-6 sm:p-8 bg-gradient-to-br from-primary via-orange-400 to-yellow-300 rounded-2xl shadow-xl">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white/30 rounded-full flex items-center justify-center">
-                        <i data-lucide="bell-ring" class="w-8 h-8 text-gray-800"></i>
+                <div class="lg:hidden text-center mb-8 p-6 sm:p-8 bg-gradient-to-br from-primary to-primary-dark rounded-2xl shadow-xl">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-full flex items-center justify-center p-3 shadow-xl border-4 border-white/20">
+                        <img src="{{ asset('logo-bsi.png') }}" alt="Logo BSI" class="w-full h-full object-contain">
                     </div>
-                    <h1 class="text-xl sm:text-2xl font-extrabold mb-2 leading-snug text-gray-800 drop-shadow-lg">
+                    <h1 class="text-xl sm:text-2xl font-extrabold mb-2 leading-snug text-white drop-shadow-lg">
                         SISTEM PENGINGAT <br> ASABRI
                     </h1>
-                    <p class="text-xs sm:text-sm font-medium text-gray-700 mt-2">
+                    <p class="text-xs sm:text-sm font-medium text-gray-100 mt-2">
                         Pensiunan ASABRI
                     </p>
                 </div>
@@ -71,6 +71,14 @@
                     <div class="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                         <p class="font-medium text-sm text-green-600">
                             {{ session('status') }}
+                        </p>
+                    </div>
+                @endif
+                
+                @if(session('error'))
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p class="font-medium text-sm text-red-600">
+                            {{ session('error') }}
                         </p>
                     </div>
                 @endif
@@ -138,7 +146,7 @@
                         <!-- Submit Button -->
                         <div class="pt-2">
                             <button type="submit"
-                                    class="group relative w-full flex justify-center items-center py-3 sm:py-3.5 px-4 border border-transparent text-sm sm:text-base font-semibold rounded-xl text-white bg-gradient-to-r from-primary to-orange-500 hover:from-orange-500 hover:to-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+                                    class="group relative w-full flex justify-center items-center py-3 sm:py-3.5 px-4 border border-transparent text-sm sm:text-base font-semibold rounded-xl text-white bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                                 <span>Masuk</span>
                                 <i data-lucide="log-in" class="w-5 h-5 ml-2"></i>
                             </button>
@@ -146,16 +154,7 @@
                     </form>
                 </div>
 
-                <!-- Register Link -->
-                <div class="mt-6 text-center">
-                    <p class="text-sm sm:text-base text-gray-600">
-                        Belum punya akun?
-                        <a href="{{ route('register') }}" 
-                           class="font-semibold text-primary hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline">
-                            Daftar di sini
-                        </a>
-                    </p>
-                </div>
+
 
                 <!-- Footer Info -->
                 <div class="mt-8 text-center">
