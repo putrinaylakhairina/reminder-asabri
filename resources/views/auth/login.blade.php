@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Login - {{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ asset('daipolres.webp') }}" type="image/webp">
+    <title>Login - Reminder ASABRI</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://unpkg.com/lucide@latest" onload="lucide.createIcons()"></script>
 </head>
@@ -23,15 +22,16 @@
             
             <div class="text-center relative z-10 max-w-lg">
                 <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
-                    <img src="{{ asset('daipolres.webp') }}" alt="Logo Polres Langsa" 
-                         class="w-48 h-48 xl:w-56 xl:h-56 mx-auto mb-6 drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-white/30 rounded-full flex items-center justify-center">
+                        <i data-lucide="bell-ring" class="w-12 h-12 text-gray-800"></i>
+                    </div>
                     <h1 class="text-2xl xl:text-3xl font-extrabold mb-4 leading-tight text-gray-800 drop-shadow-lg">
-                        DUTA PELAJAR KAMTIBMAS <br> DAN DA'I POLRI
+                        SISTEM PENGINGAT <br> ASABRI
                     </h1>
                     <div class="w-20 h-1 bg-gray-800 mx-auto mb-4 rounded-full"></div>
                     <p class="text-sm xl:text-base font-semibold text-gray-700 drop-shadow-md leading-relaxed">
-                        Tingkat Pelajar SMP/Sederajat, SMA/Sederajat, dan Bhabinkamtibmas <br>
-                        Polsek Wilkum Polres Langsa
+                        Sistem Informasi Notifikasi dan Pengingat <br>
+                        Pensiunan ASABRI
                     </p>
                 </div>
             </div>
@@ -43,13 +43,14 @@
 
                 <!-- Mobile Branding - Enhanced -->
                 <div class="lg:hidden text-center mb-8 p-6 sm:p-8 bg-gradient-to-br from-primary via-orange-400 to-yellow-300 rounded-2xl shadow-xl">
-                    <img src="{{ asset('daipolres.webp') }}" alt="Logo Polres Langsa" 
-                         class="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-4 drop-shadow-2xl">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white/30 rounded-full flex items-center justify-center">
+                        <i data-lucide="bell-ring" class="w-8 h-8 text-gray-800"></i>
+                    </div>
                     <h1 class="text-xl sm:text-2xl font-extrabold mb-2 leading-snug text-gray-800 drop-shadow-lg">
-                        DUTA PELAJAR KAMTIBMAS <br> DAN DA'I POLRI
+                        SISTEM PENGINGAT <br> ASABRI
                     </h1>
                     <p class="text-xs sm:text-sm font-medium text-gray-700 mt-2">
-                        Polres Langsa
+                        Pensiunan ASABRI
                     </p>
                 </div>
 
@@ -81,19 +82,19 @@
 
                         <!-- Login Field -->
                         <div>
-                            <label for="login" class="block text-sm font-semibold text-gray-700 mb-2">
-                                Nomor Registrasi / NISN
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Alamat Email
                             </label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-4">
-                                    <i data-lucide="user-round" class="w-5 h-5 text-gray-400"></i>
+                                    <i data-lucide="mail" class="w-5 h-5 text-gray-400"></i>
                                 </span>
-                                <input id="login" name="login" type="text" value="{{ old('login') }}" 
+                                <input id="email" name="email" type="email" value="{{ old('email') }}" 
                                        required autofocus
-                                       placeholder="Masukkan nomor registrasi atau NISN"
+                                       placeholder="Masukkan alamat email Anda"
                                        class="block w-full pl-12 pr-4 py-3 sm:py-3.5 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-sm sm:text-base">
                             </div>
-                            @error('login')
+                            @error('email')
                                 <p class="mt-2 text-xs sm:text-sm text-red-600 flex items-center">
                                     <i data-lucide="alert-circle" class="w-4 h-4 mr-1"></i>
                                     {{ $message }}
@@ -159,7 +160,7 @@
                 <!-- Footer Info -->
                 <div class="mt-8 text-center">
                     <p class="text-xs text-gray-500">
-                        © 2026 One Seulanga Nusantara. All rights reserved.
+                        © {{ date('Y') }} Reminder ASABRI. All rights reserved.
                     </p>
                 </div>
 
