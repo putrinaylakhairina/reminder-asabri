@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ReminderService
 {
-    public function __construct(
-        private readonly WhatsAppService $whatsAppService
-    ) {}
+    public function __construct() {}
 
     /**
      * Create a reminder for a pensioner.
@@ -54,12 +52,12 @@ class ReminderService
     }
 
     /**
-     * Send a reminder via Email and WhatsApp, then mark as sent.
+     * Send a reminder via Email, then mark as sent.
      */
     public function sendReminder(Reminder $reminder): array
     {
         $pensioner = $reminder->pensioner;
-        $results = ['email' => false, 'whatsapp' => false, 'errors' => []];
+        $results = ['email' => false, 'errors' => []];
 
         // 1. Send Email
         try {
@@ -75,39 +73,8 @@ class ReminderService
             $results['errors'][] = 'Email gagal dikirim: ' . $e->getMessage();
         }
 
-        // 2. Send WhatsApp
-        try {
-            $message = "Halo *{$pensioner->nama}*,\n\n"
-                . "Kami ingin menginformasikan bahwa pembayaran dana pensiun Anda akan segera jatuh tempo.\n\n"
-                . "*Detail Informasi:*\n"
-                . "- Nama: {$pensioner->nama}\n"
-                . "- NIP: {$pensioner->nip}\n"
-                . "- Tanggal Jatuh Tempo: {$pensioner->tanggal_jatuh_tempo->format('d F Y')}\n"
-                . "- Status: {$pensioner->status_label}\n\n"
-                . "Silakan lakukan tindakan yang diperlukan.\n\n"
-                . "Terima kasih,\n*Sistem Pengingat ASABRI*";
-
-            $waResponse = $this->whatsAppService->sendMessage($pensioner->no_hp, $message);
-
-            if (isset($waResponse['status']) && $waResponse['status']) {
-                PaymentLog::create([
-                    'pensioner_id' => $pensioner->id,
-                    'tanggal' => Carbon::now(),
-                    'status' => 'whatsapp_sent',
-                ]);
-                $results['whatsapp'] = true;
-            } else {
-                $reason = $waResponse['reason'] ?? 'Unknown error';
-                Log::error("Failed to send WA to {$pensioner->no_hp}: {$reason}");
-                $results['errors'][] = 'WhatsApp gagal: ' . $reason;
-            }
-        } catch (\Exception $e) {
-            Log::error("WhatsApp exception for {$pensioner->no_hp}: " . $e->getMessage());
-            $results['errors'][] = 'WhatsApp error: ' . $e->getMessage();
-        }
-
-        // 3. Update reminder status
-        if ($results['email'] || $results['whatsapp']) {
+        // 2. Update reminder status
+        if ($results['email']) {
             $this->markAsSent($reminder);
         } else {
             $reminder->update(['status' => 'failed']);

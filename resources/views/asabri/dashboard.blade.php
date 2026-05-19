@@ -33,7 +33,6 @@
                             <div>
                                 <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Kontak</h4>
                                 <p class="text-sm text-gray-600">Email: {{ $pensioner->email }}</p>
-                                <p class="text-sm text-gray-600">WhatsApp: {{ $pensioner->no_hp }}</p>
                             </div>
                         </div>
 

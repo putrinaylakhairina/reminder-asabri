@@ -32,7 +32,6 @@ class ReminderServiceTest extends TestCase
             'instansi' => 'Polres',
             'gaji_pensiun' => 5000000,
             'tanggal_jatuh_tempo' => now()->addDays(10),
-            'no_hp' => '08123456789',
             'email' => 'john@example.com',
         ]);
 
@@ -61,7 +60,6 @@ class ReminderServiceTest extends TestCase
             'instansi' => 'Polres',
             'gaji_pensiun' => 5000000,
             'tanggal_jatuh_tempo' => now()->addDays(5),
-            'no_hp' => '08123456789',
             'email' => 'john@example.com',
         ]);
 
@@ -73,7 +71,6 @@ class ReminderServiceTest extends TestCase
             'instansi' => 'Polres',
             'gaji_pensiun' => 5000000,
             'tanggal_jatuh_tempo' => now()->addDays(20),
-            'no_hp' => '08123456789',
             'email' => 'jane@example.com',
         ]);
 

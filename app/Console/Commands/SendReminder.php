@@ -52,7 +52,7 @@ class SendReminder extends Command
             
             $results = $reminderService->sendReminder($reminder);
 
-            if ($results['email'] || $results['whatsapp']) {
+            if ($results['email']) {
                 $sentCount++;
                 $this->info("Successfully sent reminder ID: {$reminder->id}");
             } else {

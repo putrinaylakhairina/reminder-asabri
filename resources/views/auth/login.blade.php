@@ -82,10 +82,19 @@
                         </p>
                     </div>
                 @endif
+                
+                @error('login')
+                    <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 mr-2 flex-shrink-0 mt-0.5"></i>
+                        <p class="font-medium text-sm text-red-600">
+                            {{ $message }}
+                        </p>
+                    </div>
+                @enderror
 
                 <!-- Form Card -->
                 <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-10">
-                    <form method="POST" action="{{ route('login') }}" class="space-y-5 sm:space-y-6">
+                    <form method="POST" action="{{ route('login') }}" class="space-y-5 sm:space-y-6" novalidate>
                         @csrf
 
                         <!-- Login Field -->

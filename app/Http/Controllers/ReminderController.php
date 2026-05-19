@@ -94,12 +94,8 @@ class ReminderController extends Controller
 
         $results = $this->reminderService->sendReminder($reminder);
 
-        if ($results['email'] || $results['whatsapp']) {
-            $channels = [];
-            if ($results['email']) $channels[] = 'Email';
-            if ($results['whatsapp']) $channels[] = 'WhatsApp';
-
-            return back()->with('success', 'Reminder berhasil dikirim via ' . implode(' & ', $channels) . '.');
+        if ($results['email']) {
+            return back()->with('success', 'Reminder berhasil dikirim via Email.');
         }
 
         return back()->with('error', 'Gagal mengirim reminder. ' . implode(', ', $results['errors']));

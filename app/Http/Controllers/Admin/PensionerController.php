@@ -21,9 +21,9 @@ class PensionerController extends Controller
                 $query->whereDate('tanggal_jatuh_tempo', '<=', now());
             } elseif ($status === 'mendekati') {
                 $query->whereDate('tanggal_jatuh_tempo', '>', now())
-                      ->whereDate('tanggal_jatuh_tempo', '<=', now()->addDays(3));
+                      ->whereDate('tanggal_jatuh_tempo', '<=', now()->addDays(7));
             } elseif ($status === 'aman') {
-                $query->whereDate('tanggal_jatuh_tempo', '>', now()->addDays(3));
+                $query->whereDate('tanggal_jatuh_tempo', '>', now()->addDays(7));
             }
         }
 
@@ -46,7 +46,6 @@ class PensionerController extends Controller
             'instansi' => 'required|string|max:255',
             'gaji_pensiun' => 'required|numeric',
             'tanggal_jatuh_tempo' => 'required|date',
-            'no_hp' => 'required|string|max:20',
         ]);
 
         $user = User::create([
@@ -63,7 +62,6 @@ class PensionerController extends Controller
             'instansi' => $request->instansi,
             'gaji_pensiun' => $request->gaji_pensiun,
             'tanggal_jatuh_tempo' => $request->tanggal_jatuh_tempo,
-            'no_hp' => $request->no_hp,
             'email' => $request->email,
         ]);
 
@@ -84,7 +82,6 @@ class PensionerController extends Controller
             'instansi' => 'required|string|max:255',
             'gaji_pensiun' => 'required|numeric',
             'tanggal_jatuh_tempo' => 'required|date',
-            'no_hp' => 'required|string|max:20',
         ]);
 
         $pensioner->user->update([

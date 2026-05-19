@@ -75,7 +75,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex space-x-2">
                                         <a href="{{ route('admin.pensioners.edit', $pensioner) }}" class="text-blue-600 hover:text-blue-900">Edit</a>
-                                        <form action="{{ route('admin.pensioners.destroy', $pensioner) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        <form action="{{ route('admin.pensioners.destroy', $pensioner) }}" method="POST" onsubmit="event.preventDefault(); Swal.fire({title: 'Konfirmasi Hapus', text: 'Apakah Anda yakin ingin menghapus data ini?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#d33', cancelButtonColor: '#3085d6', confirmButtonText: 'Ya, Hapus', cancelButtonText: 'Batal'}).then((result) => { if (result.isConfirmed) { this.submit(); } });">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:text-red-900">Hapus</button>

@@ -22,7 +22,6 @@
                             <select name="status" id="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 <option value="">Semua Saluran</option>
                                 <option value="email_sent" {{ request('status') == 'email_sent' ? 'selected' : '' }}>Email</option>
-                                <option value="whatsapp_sent" {{ request('status') == 'whatsapp_sent' ? 'selected' : '' }}>WhatsApp</option>
                             </select>
                         </div>
                         <div class="flex items-end h-full mt-6">
@@ -64,10 +63,6 @@
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                                                 Email
                                             </span>
-                                        @elseif($log->status === 'whatsapp_sent')
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                WhatsApp
-                                            </span>
                                         @else
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
                                                 {{ $log->status }}
@@ -75,7 +70,7 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $log->pensioner->no_hp }} / {{ $log->pensioner->email }}
+                                        {{ $log->pensioner->email }}
                                     </td>
                                 </tr>
                             @empty

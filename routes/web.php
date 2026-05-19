@@ -13,7 +13,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     if (Auth::user()->isAdmin()) {
-        return redirect()->route('admin.pensioners.index');
+        return redirect()->route('admin.dashboard');
     }
     return redirect()->route('asabri.dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
 
 // Admin Routes
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pensioners/export-pdf', [AdminPensionerController::class, 'exportPdf'])->name('pensioners.export-pdf');
     Route::resource('pensioners', AdminPensionerController::class);
 

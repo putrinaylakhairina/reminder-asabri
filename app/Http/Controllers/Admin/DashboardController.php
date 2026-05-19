@@ -15,10 +15,10 @@ class DashboardController extends Controller
         $totalJatuhTempo = Pensioner::whereDate('tanggal_jatuh_tempo', '<=', now())->count();
         
         $mendekati = Pensioner::whereDate('tanggal_jatuh_tempo', '>', now())
-                      ->whereDate('tanggal_jatuh_tempo', '<=', now()->addDays(3))->count();
+                      ->whereDate('tanggal_jatuh_tempo', '<=', now()->addDays(7))->count();
 
         $totalNotifikasi = PaymentLog::count();
-        $notifikasiSukses = PaymentLog::where('status', 'sent')->count();
+        $notifikasiSukses = PaymentLog::whereIn('status', ['sent', 'email_sent'])->count();
 
         $recentPensioners = Pensioner::latest()->take(5)->get();
 

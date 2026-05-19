@@ -117,12 +117,12 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                                         @if($reminder->status === 'pending')
-                                            <form action="{{ route('admin.reminders.send', $reminder) }}" method="POST" class="inline" onsubmit="return confirm('Kirim reminder ini via Email & WhatsApp?')">
+                                            <form action="{{ route('admin.reminders.send', $reminder) }}" method="POST" class="inline" onsubmit="event.preventDefault(); Swal.fire({title: 'Konfirmasi', text: 'Kirim reminder ini via Email & WhatsApp?', icon: 'question', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Ya, Kirim', cancelButtonText: 'Batal'}).then((result) => { if (result.isConfirmed) { this.submit(); } });">
                                                 @csrf
                                                 <button type="submit" class="text-indigo-600 hover:text-indigo-900 font-semibold">Kirim</button>
                                             </form>
                                         @endif
-                                        <form action="{{ route('admin.reminders.destroy', $reminder) }}" method="POST" class="inline" onsubmit="return confirm('Hapus reminder ini?')">
+                                        <form action="{{ route('admin.reminders.destroy', $reminder) }}" method="POST" class="inline" onsubmit="event.preventDefault(); Swal.fire({title: 'Konfirmasi Hapus', text: 'Hapus reminder ini?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#d33', cancelButtonColor: '#3085d6', confirmButtonText: 'Ya, Hapus', cancelButtonText: 'Batal'}).then((result) => { if (result.isConfirmed) { this.submit(); } });">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:text-red-900">Hapus</button>

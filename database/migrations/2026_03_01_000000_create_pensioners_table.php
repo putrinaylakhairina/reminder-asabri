@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('instansi');
             $table->decimal('gaji_pensiun', 15, 2);
             $table->date('tanggal_jatuh_tempo');
-            $table->string('no_hp');
             $table->string('email');
             $table->timestamps();
         });

@@ -16,7 +16,6 @@ class Pensioner extends Model
         'instansi',
         'gaji_pensiun',
         'tanggal_jatuh_tempo',
-        'no_hp',
         'email',
     ];
 
@@ -50,7 +49,7 @@ class Pensioner extends Model
 
         $diffInDays = $today->diffInDays($dueDate, false);
 
-        if ($diffInDays <= 3) {
+        if ($diffInDays <= 7) {
             return 'mendekati';
         }
 
